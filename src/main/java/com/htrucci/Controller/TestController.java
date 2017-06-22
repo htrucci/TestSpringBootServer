@@ -2,6 +2,7 @@ package com.htrucci.Controller;
 
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -19,5 +20,12 @@ public class TestController{
         ModelAndView mav = new ModelAndView("index");
         return mav;
     }
+
+    @RequestMapping(value="/hello")
+    public String newPost(Model model){
+        model.addAttribute("name","황교빈");
+        return "new";
+    }
+
 }
 
