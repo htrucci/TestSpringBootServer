@@ -1,54 +1,40 @@
 package com.htrucci.Controller;
 
+
+import groovy.transform.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.util.Date;
+
 
 /**
  * Created by 201410089 on 2017-06-22.
  */
+
+//@TableGenerator(name = "POST", table = "POST", pkColumnName = "ID")
+@EqualsAndHashCode
+@Entity
 public class Post {
-    private long id;
-    private String title;
-    private String content;
-    private Date created_at;
-    private Date updated_at;
 
-    public long getId() {
-        return id;
-    }
 
-    public void setId(long id) {
-        this.id = id;
-    }
 
-    public String getTitle() {
-        return title;
-    }
+    @Id
+    @GeneratedValue
+    @Getter @Setter
+    int id;
+    @Getter @Setter
+    String subject;
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
+    @Column(columnDefinition = "text")
+    @Getter @Setter
+    String content;
 
-    public String getContent() {
-        return content;
-    }
+    @Getter @Setter
+    Date regDate;
 
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public Date getCreated_at() {
-        return created_at;
-    }
-
-    public void setCreated_at(Date created_at) {
-        this.created_at = created_at;
-    }
-
-    public Date getUpdated_at() {
-        return updated_at;
-    }
-
-    public void setUpdated_at(Date updated_at) {
-        this.updated_at = updated_at;
-    }
 }

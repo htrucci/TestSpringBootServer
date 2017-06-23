@@ -27,5 +27,11 @@ public class TestController{
         return "new";
     }
 
+    @RequestMapping(value="/blog")
+    public String blog(Model model){
+        System.out.println("/blog");
+        return "blog";
+    }
+
 }
 

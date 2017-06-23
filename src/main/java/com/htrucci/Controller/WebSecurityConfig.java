@@ -10,18 +10,22 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
-                .authorizeRequests()
-                .antMatchers("/**","/js/**", "/css/**", "/fonts/**", "/user/signup", "/api/**", "/webjars/**").permitAll() /*로그인 없이 접속 할 수 있는 위치*/
-                .anyRequest().authenticated();
-        http
-                .formLogin()
-                .loginPage("/login")
-                .defaultSuccessUrl("/")
-                .permitAll()
-                .and()
-                .logout()
-                .permitAll();
+
+        http.authorizeRequests().antMatchers("/").permitAll().and().authorizeRequests().antMatchers("/console/**").permitAll();
+        http.csrf().disable();
+        http.headers().frameOptions().disable();
+//        http
+//                .authorizeRequests()
+//                .antMatchers("/*","/**","/js/**", "/css/**", "/fonts/**", "/user/signup", "/api/**", "/webjars/**", "/console/**").permitAll() /*로그인 없이 접속 할 수 있는 위치*/
+//                .anyRequest().authenticated();
+//        http
+//                .formLogin()
+//                .loginPage("/login")
+//                .defaultSuccessUrl("/")
+//                .permitAll()
+//                .and()
+//                .logout()
+//                .permitAll();
 
     }
 }
